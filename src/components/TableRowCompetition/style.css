@@ -1,0 +1,67 @@
+.standings {
+  width: 100%;
+  max-width: 1280px;
+  border-collapse: collapse;
+  text-align: center;
+  border: 1px solid #efefef;
+}
+
+.standings__head {
+  background-color: #f1f1f1;
+}
+
+.standings__head-cell {
+  padding: 5px;
+}
+
+.standings__row {
+  border-bottom: 1px solid #efefef;
+}
+
+.mobile-cell {
+  display: none;
+}
+
+.football-team {
+  display: flex;
+  text-align: left;
+  align-items: center;
+  text-decoration: none;
+}
+
+.football-team:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.football-team__logo {
+  width: 30px;
+}
+
+.football-team__name {
+  color: #000;
+  padding-left: 15px;
+}
+
+@media (max-width: 880px) {
+  .standings__cell:last-child {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .standings__cell:nth-child(10),
+  .standings__cell:nth-child(9),
+  .standings__cell:nth-child(8) {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .desctop-cell {
+    display: none;
+  }
+  .mobile-cell {
+    display: block;
+  }
+}
