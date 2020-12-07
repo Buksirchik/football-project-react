@@ -1,19 +1,19 @@
 export function reducer(state, action) {
   switch (action.type) {
-    case "setCompetion":
+    case "setCompetition":
       return {
         ...state,
-        competionID: action.payload,
+        competitionID: action.payload,
       };
-    case "setListCompetions":
+    case "setListCompetitions":
       return {
         ...state,
-        listCompetions: [...action.payload],
+        listCompetitions: [...action.payload],
       };
-    case "setCompetionInfo":
+    case "setCompetitionInfo":
       return {
         ...state,
-        competionInfo: action.payload,
+        competitionInfo: action.payload,
       };
     case "setCurrentTeamID":
       return {

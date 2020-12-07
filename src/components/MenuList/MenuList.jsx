@@ -1,22 +1,23 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { API } from "../../api";
+import { AppContext } from "../../store";
 import { MenuListItem } from "../MenuListItem";
 import "./style.css";
 
 export const MenuList = () => {
-  const [menuItems, setMenuItems] = useState([]);
+  const { state: { listCompetitions }, dispatch } = useContext(AppContext);
 
   useEffect(() => {
     API.getCompetitions().then(({ data }) => {
       const { competitions } = data;
-      setMenuItems([...competitions]);
+      dispatch({ type: "setListCompetitions", payload: competitions });
     });
   }, []);
 
   return (
     <ul className="football-list">
-      {menuItems.map((item) => (
-        <MenuListItem item={item} key={item.id}/>
+      {listCompetitions.map((item) => (
+        <MenuListItem item={item} key={item.id} competitionID={item.id} />
       ))}
     </ul>
   );

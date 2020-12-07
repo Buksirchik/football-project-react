@@ -5,6 +5,7 @@ export const Navigation = ({ children }) => {
   const [isOpen, setToggleMenu] = useState(false);
   const activeMenu = isOpen ? "open" : "";
   const toggleMenuHandler = () => setToggleMenu(!isOpen);
+
   return (
     <>
       <nav className={`navigation ${activeMenu}`}>
