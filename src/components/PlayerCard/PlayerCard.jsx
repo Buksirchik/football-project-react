@@ -1,9 +1,19 @@
+import { useDispatch, useSelector } from "react-redux";
+import { addFavoritePlayer } from "../../redux/actions";
+import { getFavoritePlayersSelector } from "../../redux/selectors";
 import "./style.css";
 
 export const PlayerCard = (props) => {
-  const { name, dateOfBirth, position, nationality, role } = props;
+  const dispatch = useDispatch();
+  const favoritePlayers = useSelector(getFavoritePlayersSelector);
+  const { name, dateOfBirth, position, nationality, role, id } = props;
+
+  const isFa
+  const btnClickHandler = () => {
+    dispatch(addFavoritePlayer(id));
+  };
   return (
-    <div className="card">
+    <div className="card" key={id}>
       <div className="card__front">
         <p>{name || "John"}</p>
       </div>
@@ -15,6 +25,8 @@ export const PlayerCard = (props) => {
         </p>
         <p>Position: {position || "Team Member"}</p>
         <p>Role: {role || "Team Member"}</p>
+
+        <button onClick={btnClickHandler}>FOLLOW</button>
       </div>
     </div>
   );

@@ -1,24 +1,25 @@
-import { useContext, useEffect } from "react";
-import { AppContext } from "../../store";
+import { useEffect } from "react";
 import { TableHeadCompetition } from "../TableHeadCompetition/TableHeadCompetition";
-import { API } from "../../api";
-import "./style.css";
 import { TableRowCompetition } from "../TableRowCompetition/TableRowCompetition";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getTournamentIdSelector,
+  getTournamentInfoSelector,
+} from "../../redux/selectors";
+import { getTournamentStandings } from "../../redux/actions";
+import "./style.css";
 
 export const TableCompetition = () => {
-  const {
-    state: { competitionInfo, competitionID },
-    dispatch,
-  } = useContext(AppContext);
+  const dispatch = useDispatch();
+  const tournamentId = useSelector(getTournamentIdSelector);
+  const tournamentInfo = useSelector(getTournamentInfoSelector);
 
   useEffect(() => {
-    API.getCompetitionStandings(competitionID).then(({ data }) => {
-      dispatch({ type: "setCompetitionInfo", payload: data });
-    });
-  }, [competitionID]);
+    dispatch(getTournamentStandings(tournamentId));
+  }, [tournamentId, dispatch]);
 
-  if (!competitionInfo) return "Loading...";
-  const { competition, standings } = competitionInfo;
+  if (!tournamentInfo) return "Loading...";
+  const { competition, standings } = tournamentInfo;
 
   return (
     <>

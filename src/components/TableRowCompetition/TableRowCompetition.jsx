@@ -1,11 +1,11 @@
-import "./style.css";
+import { useDispatch } from "react-redux";
+import { setCurrentTeamId } from "../../redux/actions";
 import { TeamForm } from "../TeamForm/TeamForm";
 import flagTeam from "./images/flag.gif";
-import { AppContext } from "../../store";
-import { useContext } from "react";
+import "./style.css";
 
-export const TableRowCompetition= ({ table }) => {
-  const { dispatch } = useContext(AppContext);
+export const TableRowCompetition = ({ table }) => {
+  const dispatch = useDispatch();
 
   const tableRows = table.map((item) => {
     const {
@@ -23,7 +23,7 @@ export const TableRowCompetition= ({ table }) => {
     } = item;
 
     const teamClickHandler = () => {
-      dispatch({ type: "setCurrentTeamID", payload: team.id });
+      dispatch(setCurrentTeamId(team.id));
     };
 
     return (

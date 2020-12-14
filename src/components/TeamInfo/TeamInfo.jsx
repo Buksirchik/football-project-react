@@ -1,6 +1,10 @@
-import { useContext, useEffect } from "react";
-import { API } from "../../api";
-import { AppContext } from "../../store";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTeamInfo } from "../../redux/actions";
+import {
+  getCurrentTeamIdSelector,
+  getTeamInfoSelector,
+} from "../../redux/selectors";
 import { PlayerCard } from "../PlayerCard";
 import flag from "./images/flag.gif";
 import "./style.css";
@@ -14,16 +18,14 @@ const defaultPlayer = {
 };
 
 export const TeamInfo = () => {
-  const {
-    state: { currentTeamID, teamInfo },
-    dispatch,
-  } = useContext(AppContext);
+  const dispatch = useDispatch();
+  const teamInfo = useSelector(getTeamInfoSelector);
+  const currentTeamId = useSelector(getCurrentTeamIdSelector);
+
   useEffect(() => {
-    if (currentTeamID === null) return;
-    API.getTeam(currentTeamID).then(({ data }) => {
-      dispatch({ type: "setTeamInfo", payload: data });
-    });
-  }, [currentTeamID]);
+    if (currentTeamId === null) return;
+    dispatch(getTeamInfo(currentTeamId));
+  }, [dispatch, currentTeamId]);
 
   if (teamInfo === null) return null;
 
@@ -48,8 +50,8 @@ export const TeamInfo = () => {
       <p className="club__info">Stadium: {stadium}</p>
       <h3 className="club__info">Team:</h3>
       <div className="club-team">
-        {squad.map((player, id) => (
-          <PlayerCard {...player} key={id} />
+        {squad.map((player) => (
+          <PlayerCard {...player} />
         ))}
       </div>
     </section>

@@ -3,7 +3,7 @@
   cursor: pointer;
   position: relative;
   width: 200px;
-  height: 200px;
+  height: 235px;
   margin: 10px 5px;
   perspective: 1000px;
 }
@@ -11,7 +11,6 @@
 .card__front,
 .card__back {
   border-radius: 8px;
-  border: 1px solid black;
   position: absolute;
   top: 0;
   left: 0;
@@ -28,10 +27,11 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  background-color: #EEEEEE;
 }
 
 .card__back {
-  background-color: #cfd8dc;
+  background-color: #4FC3F7;
   transform: rotateY(180deg);
 }
 

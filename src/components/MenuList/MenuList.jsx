@@ -1,23 +1,22 @@
-import { useContext, useEffect } from "react";
-import { API } from "../../api";
-import { AppContext } from "../../store";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTournamentsList } from "../../redux/actions";
+import { getListTournamentsSelector } from "../../redux/selectors";
 import { MenuListItem } from "../MenuListItem";
 import "./style.css";
 
 export const MenuList = () => {
-  const { state: { listCompetitions }, dispatch } = useContext(AppContext);
+  const dispatch = useDispatch();
+  const tournaments = useSelector(getListTournamentsSelector);
 
   useEffect(() => {
-    API.getCompetitions().then(({ data }) => {
-      const { competitions } = data;
-      dispatch({ type: "setListCompetitions", payload: competitions });
-    });
-  }, []);
+    dispatch(getTournamentsList());
+  }, [dispatch]);
 
   return (
     <ul className="football-list">
-      {listCompetitions.map((item) => (
-        <MenuListItem item={item} key={item.id} competitionID={item.id} />
+      {tournaments.map((item) => (
+        <MenuListItem item={item} key={item.id} tournamentId={item.id} />
       ))}
     </ul>
   );

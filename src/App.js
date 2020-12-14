@@ -1,24 +1,26 @@
-import { useReducer } from "react";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import "./App.css";
 import { Content } from "./components/Content";
 import { MenuList } from "./components/MenuList";
 import { Navigation } from "./components/Navigation/";
 import { TableCompetition } from "./components/TableCompetition";
 import { TeamInfo } from "./components/TeamInfo/TeamInfo";
-import { AppContext, reducer, initState } from "./store";
+import { persistor, store } from "./redux";
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initState);
   return (
-    <AppContext.Provider value={{ dispatch, state }}>
-      <Navigation>
-        <MenuList />
-      </Navigation>
-      <Content>
-        <TableCompetition />
-        <TeamInfo />
-      </Content>
-    </AppContext.Provider>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <Navigation>
+          <MenuList />
+        </Navigation>
+        <Content>
+          <TableCompetition />
+          <TeamInfo />
+        </Content>
+      </PersistGate>
+    </Provider>
   );
 }
 

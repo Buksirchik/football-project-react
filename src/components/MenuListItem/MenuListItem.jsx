@@ -1,13 +1,12 @@
-import { useContext } from "react";
-import { AppContext } from "../../store";
+import { useDispatch } from "react-redux";
+import { setTournamentId } from "../../redux/actions";
 import "./style.css";
 
-export const MenuListItem = ({ item, competitionID }) => {
-  const { dispatch } = useContext(AppContext);
+export const MenuListItem = ({ item, tournamentId }) => {
+  const dispatch = useDispatch();
 
   const btnClickHandler = () => {
-    dispatch({ type: "setCompetition", payload: competitionID });
-    dispatch({ type: "deleteTeamInfo" });
+    dispatch(setTournamentId(tournamentId));
   };
 
   return (

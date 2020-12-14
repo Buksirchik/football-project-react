@@ -1,14 +1,13 @@
-import { useContext } from "react";
-import { AppContext } from "../../store";
+import { useSelector } from "react-redux";
+import { getTournamentIdSelector } from "../../redux/selectors";
 import "./style.css";
 
 export const TableHeadCompetition = () => {
-  const {
-    state: { competitionID },
-  } = useContext(AppContext);
+  const tournamentId = useSelector(getTournamentIdSelector);
 
   // if the world championship or european championship, then do not show the form
-  const isNotCup = competitionID !== 2000 && competitionID !== 2018 ? true : false;
+  const isNotCup =
+    tournamentId !== 2000 && tournamentId !== 2018 ? true : false;
   return (
     <thead>
       <tr className="standings__head">

@@ -5,7 +5,7 @@ const instance = axios.create({
   headers: {'X-Auth-Token': '0de2b419cd614b6da622b89303e0c8ad'}
 });
 
-export const getCompetitions = () => {
+export const getTournaments = () => {
   try {
     
     return instance.get('/competitions?plan=TIER_ONE')
@@ -15,7 +15,7 @@ export const getCompetitions = () => {
   }
 };
 
-export const getCompetitionStandings = (id = 2002) => {
+export const getTournamentStandings = (id = 2002) => {
   // 2002 - it's id of Bundesliga
   try {
 
