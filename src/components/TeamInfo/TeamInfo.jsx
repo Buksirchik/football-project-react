@@ -1,11 +1,18 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTeamInfo } from "../../redux/actions";
+import {
+  addFavoriteTeam,
+  deleteFavoriteTeam,
+  getTeamInfo,
+} from "../../redux/actions";
 import {
   getCurrentTeamIdSelector,
+  getFavoriteTeamsSelector,
   getTeamInfoSelector,
 } from "../../redux/selectors";
+import { FollowBtn } from "../FollowBtn";
 import { PlayerCard } from "../PlayerCard";
+import { UnfollowBtn } from "../UnfollowBtn";
 import flag from "./images/flag.gif";
 import "./style.css";
 
@@ -19,8 +26,10 @@ const defaultPlayer = {
 
 export const TeamInfo = () => {
   const dispatch = useDispatch();
+  const favoriteTeams = useSelector(getFavoriteTeamsSelector);
   const teamInfo = useSelector(getTeamInfoSelector);
   const currentTeamId = useSelector(getCurrentTeamIdSelector);
+  const isFavorite = !!favoriteTeams[currentTeamId];
 
   useEffect(() => {
     if (currentTeamId === null) return;
@@ -30,6 +39,7 @@ export const TeamInfo = () => {
   if (teamInfo === null) return null;
 
   const {
+    id,
     name,
     crestUrl,
     founded = "1960",
@@ -42,17 +52,48 @@ export const TeamInfo = () => {
     squad = Array(10).fill(defaultPlayer);
   }
 
+  const followClickHandler = () => {
+    const team = {
+      id,
+      name,
+      crestUrl,
+    };
+    dispatch(addFavoriteTeam(team));
+  };
+
+  const unfollowClickHandler = () => {
+    dispatch(deleteFavoriteTeam(id));
+  };
+
   return (
     <section className="club">
-      <h2 className="club__title">{name}</h2>
-      <img className="club__img" src={crestUrl || flag} alt={name} />
-      <p className="club__info">Founded: {founded}</p>
-      <p className="club__info">Stadium: {stadium}</p>
-      <h3 className="club__info">Team:</h3>
-      <div className="club-team">
-        {squad.map((player) => (
-          <PlayerCard {...player} />
-        ))}
+      <div className="club-info">
+        <div className="club-info__img-wrap">
+          <img className="club-info__img" src={crestUrl || flag} alt={name} />
+        </div>
+        <div className="club-info__col">
+          <h2 className="club-info__title">{name}</h2>
+          <p className="club-info__text">Founded: {founded}</p>
+          <p className="club-info__text">Stadium: {stadium}</p>
+          {isFavorite ? (
+            <UnfollowBtn onClick={unfollowClickHandler} />
+          ) : (
+            <FollowBtn onClick={followClickHandler} />
+          )}
+        </div>
+      </div>
+      <div className="team">
+        <h3 className="team__title">Team:</h3>
+        <div className="team-block">
+          {squad.map((player) => (
+            <PlayerCard
+              {...player}
+              key={player.id}
+              clubName={name}
+              clubIcon={crestUrl}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

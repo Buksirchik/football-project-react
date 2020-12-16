@@ -2,11 +2,12 @@ import { useDispatch } from "react-redux";
 import { setTournamentId } from "../../redux/actions";
 import "./style.css";
 
-export const MenuListItem = ({ item, tournamentId }) => {
+export const MenuListItem = ({ item, tournamentId, toggleMenu }) => {
   const dispatch = useDispatch();
 
   const btnClickHandler = () => {
     dispatch(setTournamentId(tournamentId));
+    toggleMenu();
   };
 
   return (

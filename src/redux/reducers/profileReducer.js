@@ -1,41 +1,52 @@
-import { ADD_FAVORITE_PLAYER, ADD_FAVORITE_TEAM, DELETE_FAVORITE_PLAYER, DELETE_FAVORITE_TEAM } from "../actionTypes"
+import {
+  ADD_FAVORITE_PLAYER,
+  ADD_FAVORITE_TEAM,
+  DELETE_FAVORITE_PLAYER,
+  DELETE_FAVORITE_TEAM,
+} from "../actionTypes";
 
 const initialState = {
-  listFavoriteTeams: [],
-  listFavoritePlayers: [],
-}
+  listFavoriteTeams: {},
+  listFavoritePlayers: {},
+};
 
 export const profileReducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case ADD_FAVORITE_PLAYER:
+      const playerId = action.payload.id;
+      const favoritePlayers = {
+        ...state.listFavoritePlayers,
+        [playerId]: action.payload,
+      };
       return {
         ...state,
-        listFavoritePlayers: [...state.listFavoritePlayers, action.payload]
-      }
+        listFavoritePlayers: favoritePlayers,
+      };
     case ADD_FAVORITE_TEAM:
+      const teamId = action.payload.id;
+      const favoriteTeams = {
+        ...state.listFavoriteTeams,
+        [teamId]: action.payload,
+      };
       return {
         ...state,
-        listFavoriteTeams: [...state.listFavoritePlayers, action.payload]
-      }
-    case DELETE_FAVORITE_PLAYER: 
-      const playersArr = state.listFavoritePlayers
-      const listPlayers = deleteFavoriteItem(playersArr, action.payload)
+        listFavoriteTeams: favoriteTeams,
+      };
+    case DELETE_FAVORITE_PLAYER:
+      const players = { ...state.listFavoritePlayers };
+      delete players[action.payload];
       return {
         ...state,
-        listFavoritePlayers: [...listPlayers]
-      }
-      case DELETE_FAVORITE_TEAM: 
-      const teamsArr = state.listFavoriteTeams
-      const listTeam = deleteFavoriteItem(teamsArr, action.payload)
+        listFavoritePlayers: players,
+      };
+    case DELETE_FAVORITE_TEAM:
+      const teams = { ...state.listFavoriteTeams };
+      delete teams[action.payload];
       return {
         ...state,
-        listFavoriteTeams: [...listTeam]
-      }
+        listFavoriteTeams: teams,
+      };
     default:
-      return state
+      return state;
   }
-}
-
-function deleteFavoriteItem(arr, target) {
-  return arr.filter( item => item.id !== target.id)
-}
+};

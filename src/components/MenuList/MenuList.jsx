@@ -5,7 +5,7 @@ import { getListTournamentsSelector } from "../../redux/selectors";
 import { MenuListItem } from "../MenuListItem";
 import "./style.css";
 
-export const MenuList = () => {
+export const MenuList = ( {toggleMenu} ) => {
   const dispatch = useDispatch();
   const tournaments = useSelector(getListTournamentsSelector);
 
@@ -16,7 +16,7 @@ export const MenuList = () => {
   return (
     <ul className="football-list">
       {tournaments.map((item) => (
-        <MenuListItem item={item} key={item.id} tournamentId={item.id} />
+        <MenuListItem item={item} key={item.id} tournamentId={item.id} toggleMenu={toggleMenu}/>
       ))}
     </ul>
   );

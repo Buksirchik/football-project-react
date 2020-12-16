@@ -1,19 +1,14 @@
 .navigation {
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #fbfbfb;
+  border-bottom: 1px solid #263238;
   margin: 0;
   padding: 0;
-  position: fixed;
-  height: 100vh;
-  width: 275px;
-  top: 0;
-  left: -275px;
-  transition: 0.3s;
-  z-index: 2;
-  background-color: #fbfbfb;
-}
-
-.navigation.open {
-  left: 0;
-  transition: 0.3s;
+  z-index: 3;
 }
 
 .menu-icon {
@@ -24,14 +19,16 @@
   background-position: -2px 0;
   cursor: pointer;
   top: 10px;
-  left: 280px;
+  left: 25px;
   position: absolute;
   z-index: 2;
+  transition: left 0.3s;
 }
 
 .menu-icon.open {
   left: 280px;
   background-position: 36px 0;
+  transition: left 0.3s;
 }
 
 .overlay {
@@ -50,6 +47,17 @@
 }
 
 .menu-wrap {
-  overflow: auto;
-  height: 100%;
+  position: absolute;
+  height: 100vh;
+  width: 275px;
+  top: 0;
+  left: -275px;
+  overflow: hidden;
+  background-color: #fbfbfb;
+  z-index: 2;
+}
+
+.menu-wrap.open {
+  left: 0;
+  transition: 0.3s;
 }

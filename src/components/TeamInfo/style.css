@@ -1,21 +1,55 @@
-.club__title {
-  text-align: center;
-}
-
-.club__img {
-  display: block;
-  margin: auto;
-  width: 300px;
-}
-
-.club__info {
-  font-size: 20px;
-  font-weight: 500;
-  text-align: center;
-}
-
-.club-team {
+.club-info {
   display: flex;
   flex-wrap: wrap;
+  background-color: #f50057;
+  padding: 20px;
+}
+
+.club-info__img-wrap {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  display: flex;
   justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.club-info__img {
+  display: block;
+  margin: auto;
+  width: 65%;
+}
+
+.club-info__col {
+  width: 400px;
+  word-break: break-word;
+  margin-left: 25px;
+}
+
+.club-info__text,
+.team__title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.team {
+  width: 100%;
+}
+
+.team-block {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+@media (max-width: 800px) {
+  .club-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  .club-info__col {
+    margin: 0;
+  }
 }

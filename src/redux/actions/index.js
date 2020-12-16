@@ -1,6 +1,9 @@
 import { API } from "../../api";
 import {
+  ADD_FAVORITE_TEAM,
   ADD_FAVORITE_PLAYER,
+  DELETE_FAVORITE_PLAYER,
+  DELETE_FAVORITE_TEAM,
   SET_CURRENT_TEAM_ID,
   SET_TEAM_INFO,
   SET_TOURNAMENTS_LIST,
@@ -57,7 +60,17 @@ export const addFavoritePlayer = (payload) => ({
   payload,
 });
 
-export const addFavorite = (payload) => ({
+export const addFavoriteTeam = (payload) => ({
   type: ADD_FAVORITE_TEAM,
+  payload,
+});
+
+export const deleteFavoritePlayer = (payload) => ({
+  type: DELETE_FAVORITE_PLAYER,
+  payload,
+});
+
+export const deleteFavoriteTeam = (payload) => ({
+  type: DELETE_FAVORITE_TEAM,
   payload,
 });
