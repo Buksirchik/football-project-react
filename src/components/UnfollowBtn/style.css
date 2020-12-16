@@ -1,0 +1,43 @@
+.unfollow {
+  display: block;
+  border: none;
+  background-color: transparent;
+  padding: 5px 10px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.unfollow::before,
+.unfollow::after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 100%;
+  background-color: #9e9e9e;
+  border-radius: 4px;
+  transition: 0.3s;
+  z-index: -1;
+}
+
+.unfollow:focus {
+  outline: none;
+}
+
+.unfollow:hover::before {
+  right: 0%;
+}
+
+.unfollow::after {
+  right: 0;
+  background-color: #78909c;
+  z-index: -2;
+}
+
+.unfollow:active::before  {
+  background-color: #607d8b;
+}

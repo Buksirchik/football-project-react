@@ -1,0 +1,44 @@
+.favorite-player {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 5px 10px;
+  align-items: center;
+  background-color: #fafafa;
+  border-bottom: 1px solid #26c6da;
+  position: relative;
+  transition: 0.5s;
+}
+
+.favorite-player:hover {
+  background-color: #cfd8dc;
+  transition: 0.5s;
+}
+
+.player__club-wrap {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.player__club {
+  width: 50%;
+}
+
+.player-info {
+  margin-left: 15px;
+}
+
+.player-info__text {
+  margin: 0;
+}
+
+.unfollow-player {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+}

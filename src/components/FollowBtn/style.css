@@ -1,0 +1,43 @@
+.follow {
+  display: block;
+  border: none;
+  background-color: transparent;
+  padding: 5px 10px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.follow::before ,
+.follow::after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 100%;
+  background-color: #2962ff;
+  border-radius: 4px;
+  transition: 0.3s;
+  z-index: -1;
+}
+
+.follow:focus {
+  outline: none;
+}
+
+.follow:hover::before {
+  right: 0%;
+}
+
+.follow::after {
+  right: 0;
+  background-color: #0091ea;
+  z-index: -2;
+}
+
+.follow:active::before  {
+  background-color: #0d47a1;
+}

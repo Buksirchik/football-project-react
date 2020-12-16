@@ -1,0 +1,39 @@
+.favorite-team {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: #fafafa;
+  border-bottom: 1px solid #26c6da;
+  position: relative;
+  transition: 0.5s;
+}
+
+.favorite-team:hover {
+  background-color: #cfd8dc;
+  transition: 0.5s;
+}
+
+.favorite-team__img-wrap {
+  width: 45px;
+  height: 45px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.favorite-team__img {
+  width: 50%;
+}
+
+.favorite-team__name {
+  margin-left: 15px;
+}
+
+.unfollow-team {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+}
