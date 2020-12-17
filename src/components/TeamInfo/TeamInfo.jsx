@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import {
   addFavoriteTeam,
   deleteFavoriteTeam,
   getTeamInfo,
 } from "../../redux/actions";
 import {
-  getCurrentTeamIdSelector,
   getFavoriteTeamsSelector,
   getTeamInfoSelector,
 } from "../../redux/selectors";
@@ -28,13 +28,12 @@ export const TeamInfo = () => {
   const dispatch = useDispatch();
   const favoriteTeams = useSelector(getFavoriteTeamsSelector);
   const teamInfo = useSelector(getTeamInfoSelector);
-  const currentTeamId = useSelector(getCurrentTeamIdSelector);
-  const isFavorite = !!favoriteTeams[currentTeamId];
+  const { id: teamId } = useParams();
+  const isFavorite = !!favoriteTeams[teamId];
 
   useEffect(() => {
-    if (currentTeamId === null) return;
-    dispatch(getTeamInfo(currentTeamId));
-  }, [dispatch, currentTeamId]);
+    dispatch(getTeamInfo(teamId));
+  }, [dispatch, teamId]);
 
   if (teamInfo === null) return null;
 

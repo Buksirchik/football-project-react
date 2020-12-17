@@ -22,8 +22,6 @@
 }
 
 .club-info__col {
-  width: 400px;
-  word-break: break-word;
   margin-left: 25px;
 }
 
@@ -35,6 +33,8 @@
 
 .team {
   width: 100%;
+  padding: 0px 10px;
+  box-sizing: border-box;
 }
 
 .team-block {
