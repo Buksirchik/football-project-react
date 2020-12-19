@@ -1,9 +1,38 @@
-.favorite-list {
+/* .favorite-list {
   list-style: none;
   margin: 0;
   padding: 0;
-}
+} */
 
 .following-players {
   margin-top: 20px;
+}
+
+.profile-header {
+  height: 235px;
+  background: #000;
+  position: relative;
+}
+.profile-avatar {
+  display: flex;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 50%);
+}
+
+.profile__name {
+  margin-top: 160px;
+  font-size: 48px;
+  text-align: center;
+}
+
+.profile__text {
+  text-align: center;
 }

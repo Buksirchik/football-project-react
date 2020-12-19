@@ -3,37 +3,43 @@ import {
   getFavoritePlayersSelector,
   getFavoriteTeamsSelector,
 } from "../../redux/selectors";
-import { FavoritePlayer } from "../FavoritePlayer";
-import { FavoriteTeam } from "../FavoriteTeam/FavoriteTeam";
-import avatar from "./images/avatar.png";
+import { FavoritePlayersList } from "../FavoritePlayerlList";
+import { FavoriteTeamsList } from "../FavoriteTeam/FavoriteTeamsList";
+import avatar from "./images/avatar.jpg";
 import "./style.css";
 
 export const Profile = () => {
   const favoritePlayers = useSelector(getFavoritePlayersSelector);
   const favoriteTeams = useSelector(getFavoriteTeamsSelector);
+  const isEmptyPlayers = !!Object.values(favoritePlayers).length;
+  const isEmptyTeams = !!Object.values(favoriteTeams).length;
 
   return (
     <div className="profile">
-      <div className="profile-avatar">
-        <img className="profile-avatar__img" src={avatar} alt="John Snow" />
+      <div className="profile-header">
+        <div className="profile-avatar">
+          <img className="profile-avatar__img" src={avatar} alt="John Snow" />
+        </div>
       </div>
       <p className="profile__name">John Snow</p>
-      <div className="following-teams">
-        Following teams
-        <ul className="favorite-list">
-          {Object.values(favoriteTeams).map((team) => (
-            <FavoriteTeam key={team.id} {...team} />
-          ))}
-        </ul>
-      </div>
-      <div className="following-players">
-        Following players
-        <ul className="favorite-list">
-          {Object.values(favoritePlayers).map((player) => {
-            return <FavoritePlayer key={player.id} {...player} />;
-          })}
-        </ul>
-      </div>
+
+      {isEmptyTeams ? (
+        <div className="following-teams">
+          Following teams
+          <FavoriteTeamsList teams={Object.values(favoriteTeams)} />
+        </div>
+      ) : null}
+
+      {isEmptyPlayers ? (
+        <div className="following-players">
+          Following players
+          <FavoritePlayersList players={Object.values(favoritePlayers)} />
+        </div>
+      ) : null}
+
+      {(isEmptyPlayers && isEmptyTeams) === false ? (
+        <p className="profile__text">There aren't favorite players and teams</p>
+      ) : null}
     </div>
   );
 };

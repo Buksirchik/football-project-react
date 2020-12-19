@@ -1,9 +1,8 @@
-import { useSelector } from "react-redux";
-import { getTournamentIdSelector } from "../../redux/selectors";
+import { useParams } from "react-router-dom";
 import "./style.css";
 
 export const TableHeadCompetition = () => {
-  const tournamentId = useSelector(getTournamentIdSelector);
+  const { id: tournamentId } = useParams();
 
   // if the world championship or european championship, then do not show the form
   const isNotCup =

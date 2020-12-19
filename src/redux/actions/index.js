@@ -4,10 +4,8 @@ import {
   ADD_FAVORITE_PLAYER,
   DELETE_FAVORITE_PLAYER,
   DELETE_FAVORITE_TEAM,
-  SET_CURRENT_TEAM_ID,
   SET_TEAM_INFO,
   SET_TOURNAMENTS_LIST,
-  SET_TOURNAMENT_ID,
   SET_TOURNAMENT_INFO,
 } from "../actionTypes";
 
@@ -37,16 +35,6 @@ export const setTournamentsList = (payload) => ({
 
 export const setTournamentInfo = (payload) => ({
   type: SET_TOURNAMENT_INFO,
-  payload,
-});
-
-export const setCurrentTeamId = (payload) => ({
-  type: SET_CURRENT_TEAM_ID,
-  payload,
-});
-
-export const setTournamentId = (payload) => ({
-  type: SET_TOURNAMENT_ID,
   payload,
 });
 

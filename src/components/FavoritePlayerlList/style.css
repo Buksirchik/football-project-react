@@ -1,9 +1,16 @@
+.favorite-players {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+}
+
 .favorite-player {
   display: flex;
   flex-flow: row wrap;
   padding: 5px 10px;
   align-items: center;
-  background-color: #fafafa;
+  background-color: #EEEEEE;
   border-bottom: 1px solid #26c6da;
   position: relative;
   transition: 0.5s;

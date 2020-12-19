@@ -1,8 +1,32 @@
-.football-list {
-  width: 295px;
+.nav-links {
+  width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
   list-style: none;
   overflow-y: auto;
+}
+
+.nav-links__item {
+  display: block;
+  padding: 10px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #000;
+  transition: 0.5s;
+}
+
+.nav-links__item:hover {
+  background-color: #EEEEEE;
+  transition: 0.5s;
+}
+
+.nav-links__name {
+  margin: 0;
+  font-size: 24px;
+}
+
+.active {
+  background-color: #ffc400;
 }

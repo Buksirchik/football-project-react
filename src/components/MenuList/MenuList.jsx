@@ -1,22 +1,34 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getTournamentsList } from "../../redux/actions";
-import { getListTournamentsSelector } from "../../redux/selectors";
-import { MenuListItem } from "../MenuListItem";
+import { NavLink } from "react-router-dom";
 import "./style.css";
 
-export const MenuList = ( {toggleMenu} ) => {
-  const dispatch = useDispatch();
-  const tournaments = useSelector(getListTournamentsSelector);
+const links = [
+  {
+    path: "/home",
+    name: "Home",
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+  },
+  {
+    path: "/tournaments",
+    name: "Tournaments"
+  }
+];
 
-  useEffect(() => {
-    dispatch(getTournamentsList());
-  }, [dispatch]);
-
+export const MenuList = ({ toggleMenu }) => {
   return (
-    <ul className="football-list">
-      {tournaments.map((item) => (
-        <MenuListItem item={item} key={item.id} tournamentId={item.id} toggleMenu={toggleMenu}/>
+    <ul className="nav-links">
+      {links.map((link, id) => (
+        <li className="nav-links__row" key={id}>
+          <NavLink
+            className="nav-links__item"
+            to={link.path}
+            onClick={toggleMenu}
+          >
+            <p className="nav-links__name">{link.name}</p>
+          </NavLink>
+        </li>
       ))}
     </ul>
   );

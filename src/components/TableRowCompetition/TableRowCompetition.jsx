@@ -1,11 +1,9 @@
-import { useDispatch } from "react-redux";
-import { setCurrentTeamId } from "../../redux/actions";
+import { Link } from "react-router-dom";
 import { TeamForm } from "../TeamForm/TeamForm";
 import flagTeam from "./images/flag.gif";
 import "./style.css";
 
 export const TableRowCompetition = ({ table }) => {
-  const dispatch = useDispatch();
 
   const tableRows = table.map((item) => {
     const {
@@ -22,22 +20,18 @@ export const TableRowCompetition = ({ table }) => {
       won,
     } = item;
 
-    const teamClickHandler = () => {
-      dispatch(setCurrentTeamId(team.id));
-    };
-
     return (
       <tr key={team.id}>
         <td className="standings__cell">{position}</td>
         <td className="standings__cell">
-          <div className="football-team" onClick={teamClickHandler}>
+          <Link className="football-team" to={`/team/${team.id}`}>
             <img
               src={team.crestUrl || flagTeam}
               alt={team.name}
               className="football-team__logo"
             />
             <p className="football-team__name">{team.name}</p>
-          </div>
+          </Link>
         </td>
         <td className="standings__cell">{playedGames}</td>
         <td className="standings__cell">{points}</td>

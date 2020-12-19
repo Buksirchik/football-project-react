@@ -1,1 +1,0 @@
-export { FavoritePlayer } from "./FavoritePlayer";

@@ -2,23 +2,20 @@ import { useEffect } from "react";
 import { TableHeadCompetition } from "../TableHeadCompetition/TableHeadCompetition";
 import { TableRowCompetition } from "../TableRowCompetition/TableRowCompetition";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getTournamentIdSelector,
-  getTournamentInfoSelector,
-} from "../../redux/selectors";
+import { getTournamentInfoSelector } from "../../redux/selectors";
 import { getTournamentStandings } from "../../redux/actions";
+import { useParams } from "react-router-dom";
 import "./style.css";
 
 export const TableCompetition = () => {
   const dispatch = useDispatch();
-  const tournamentId = useSelector(getTournamentIdSelector);
+  const { id: tournamentId = 2002 } = useParams();
   const tournamentInfo = useSelector(getTournamentInfoSelector);
 
   useEffect(() => {
     dispatch(getTournamentStandings(tournamentId));
   }, [tournamentId, dispatch]);
 
-  if (!tournamentInfo) return "Loading...";
   const { competition, standings } = tournamentInfo;
 
   return (
