@@ -1,0 +1,28 @@
+.preloader {
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.preloader:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 6px solid transparent;
+  border-bottom-color: #1976d2;
+  animation: preload 1.2s linear infinite;
+}
+
+@keyframes preload {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
