@@ -1,0 +1,44 @@
+.theme-swithcer {
+  width: 60px;
+  height: 30px;
+  background: var(--bg-switcher);
+  border-radius: 15px;
+  margin: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.theme-swithcer__ball {
+  width: 26px;
+  height: 26px;
+  background: var(--bg-switcher-ball);
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 32px;
+  z-index: 2;
+  transition: 0.5s;
+}
+
+.theme-swithcer__moon,
+.theme-swithcer__sun {
+  width: 25px;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  pointer-events: none;
+}
+
+.theme-swithcer__moon {
+  left: 31px;
+}
+
+.theme-swithcer__outer {
+  margin-left: auto;
+  margin-right: 30px;
+}
+
+.dark .theme-swithcer__ball {
+  left: 2px;
+  transition: 0.5s;
+}

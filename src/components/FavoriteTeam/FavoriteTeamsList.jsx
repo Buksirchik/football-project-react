@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { deleteFavoriteTeam } from "../../redux/actions";
 import "./style.css";
+import flag from "./images/flag.gif";
 
 export const FavoriteTeamsList = ({ teams }) => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ export const FavoriteTeamsList = ({ teams }) => {
         return (
           <li className="favorite-team" key={id}>
             <div className="favorite-team__img-wrap">
-              <img className="favorite-team__img" src={crestUrl} alt={name} />
+              <img className="favorite-team__img" src={crestUrl||flag} alt={name} />
             </div>
             <p className="favorite-team__name">{name}</p>
             <button className="unfollow-team" onClick={unfollowHandler}>

@@ -1,5 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Langar&display=swap");
 
 * {
-  font-family: 'Langar';
+  font-family: "Langar";
+}
+
+.main-container.light {
+  --bg-nav: #fbfbfb;
+  --bg-page: #fff;
+  --bg-menu: #fbfbfb;
+  --color-text: #000;
+  --bg-menu-hover: #eeeeee;
+  --bg-item: #eeeeee;
+  --bg-item-hover: #cfd8dc;
+  --br-color-favorite-item: #26c6da;
+  --bg-profile-header: #1a237e;
+  --bg-switcher: #000;
+  --bg-switcher-ball: #fff;
+  --br-color-table: #efefef;
+  --bg-table-header: #f1f1f1;
+  --bg-team-header: #f50057;
+  --bg-player-fr-card: #eeeeee;
+  --bg-player-bc-card: #64b5f6;
+  --card-shadow-calor: #eeeeee;
+  transition: 0.5s;
+}
+
+.main-container.dark {
+  --bg-nav: #161b22;
+  --bg-page: #06090f;
+  --bg-menu: #161b22;
+  --color-text: #fff;
+  --bg-item-hover: #37474f;
+  --bg-item: #546e7a;
+  --br-color-favorite-item: #161b22;;
+  --bg-profile-header: #546e7a;
+  --bg-switcher: #fff;
+  --bg-switcher-ball: #000;
+  --br-color-table: #161b22;
+  --bg-table-header: #78909C;
+  --bg-team-header: #130a3e;
+  --bg-player-fr-card:#607D8B;
+  --bg-player-bc-card:#37474F;
+  --card-shadow-calor: #009688;
+  transition: 0.5s;
+}
+
+.main-container {
+  width: 100%;
+  background-color: var(--bg-page);
+  color: var(--color-text);
+  display: flex;
+  flex: 1 0 auto;
 }

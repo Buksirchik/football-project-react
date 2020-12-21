@@ -1,7 +1,7 @@
 .club-info {
   display: flex;
   flex-wrap: wrap;
-  background-color: #f50057;
+  background-color: var(--bg-team-header);
   padding: 20px;
 }
 

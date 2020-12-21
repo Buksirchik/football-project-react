@@ -6,10 +6,6 @@
   border: 1px solid #efefef;
 }
 
-.standings__head {
-  background-color: #f1f1f1;
-}
-
 .standings__head-cell {
   padding: 5px;
 }
@@ -27,6 +23,7 @@
   text-align: left;
   align-items: center;
   text-decoration: none;
+  color: inherit;
 }
 
 .football-team:hover {
@@ -39,7 +36,6 @@
 }
 
 .football-team__name {
-  color: #000;
   padding-left: 15px;
 }
 

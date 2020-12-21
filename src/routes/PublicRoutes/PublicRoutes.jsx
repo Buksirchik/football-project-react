@@ -2,7 +2,7 @@ import { Route, Switch } from "react-router-dom";
 import { Profile } from "../../components/Profile";
 import { TableCompetition } from "../../components/TableCompetition/TableCompetition";
 import { TournamentList } from "../../components/TournamentList";
-import { TeamInfo } from "../../components/TeamInfo"
+import { TeamInfo } from "../../components/TeamInfo";
 
 const routes = [
   {
@@ -22,6 +22,11 @@ const routes = [
   {
     path: "/team/:id",
     render: () => <TeamInfo />,
+  },
+  {
+    path: "/",
+    render: () => <h1>Hello</h1>,
+    exact: true,
   },
 ];
 

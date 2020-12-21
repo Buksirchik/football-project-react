@@ -4,7 +4,7 @@
   width: 100%;
   top: 0;
   left: 0;
-  background-color: #fbfbfb;
+  background-color: var(--bg-nav);
   border-bottom: 1px solid #263238;
   margin: 0;
   padding: 0;
@@ -16,18 +16,22 @@
   width: 32px;
   height: 32px;
   background-image: url(./images/sprite.png);
-  background-position: -2px 0;
+  background-position: 2px 0;
   cursor: pointer;
   top: 10px;
   left: 25px;
   position: absolute;
-  z-index: 2;
+  z-index: 4;
   transition: left 0.3s;
+}
+
+.dark .menu-icon {
+  background-position: 80px 0;
 }
 
 .menu-icon.open {
   left: 280px;
-  background-position: 36px 0;
+  background-position: 32px 0;
   transition: left 0.3s;
 }
 
@@ -43,7 +47,7 @@
 
 .overlay.open {
   display: block;
-  z-index: 1;
+  z-index: 3;
 }
 
 .menu-wrap {
@@ -53,8 +57,8 @@
   top: 0;
   left: -275px;
   overflow: hidden;
-  background-color: #fbfbfb;
-  z-index: 2;
+  background-color: var(--bg-menu);
+  z-index: 4;
 }
 
 .menu-wrap.open {

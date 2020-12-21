@@ -3,7 +3,7 @@ import "./style.css";
 
 const links = [
   {
-    path: "/home",
+    path: "/",
     name: "Home",
   },
   {
@@ -12,8 +12,8 @@ const links = [
   },
   {
     path: "/tournaments",
-    name: "Tournaments"
-  }
+    name: "Tournaments",
+  },
 ];
 
 export const MenuList = ({ toggleMenu }) => {
@@ -25,6 +25,7 @@ export const MenuList = ({ toggleMenu }) => {
             className="nav-links__item"
             to={link.path}
             onClick={toggleMenu}
+            exact={true}
           >
             <p className="nav-links__name">{link.name}</p>
           </NavLink>

@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { deleteFavoritePlayer } from "../../redux/actions";
 import "./style.css";
+import flag from "./images/flag.gif";
 
 export const FavoritePlayersList = ({ players }) => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ export const FavoritePlayersList = ({ players }) => {
         return (
           <li className="favorite-player" key={id}>
             <div className="player__club-wrap">
-              <img className="player__club" src={clubIcon} alt={name} />
+              <img className="player__club" src={clubIcon||flag} alt={name} />
             </div>
             <div className="player-info">
               <p className="player-info__text">{name}</p>

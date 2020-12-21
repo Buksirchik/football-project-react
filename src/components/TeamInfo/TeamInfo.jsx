@@ -12,6 +12,7 @@ import {
 } from "../../redux/selectors";
 import { FollowBtn } from "../FollowBtn";
 import { PlayerCard } from "../PlayerCard";
+import { Preloader } from "../Preloader";
 import { UnfollowBtn } from "../UnfollowBtn";
 import flag from "./images/flag.gif";
 import "./style.css";
@@ -33,9 +34,10 @@ export const TeamInfo = () => {
 
   useEffect(() => {
     dispatch(getTeamInfo(teamId));
+    window.scrollTo(0, 0);
   }, [dispatch, teamId]);
 
-  if (teamInfo === null) return null;
+  if (teamInfo === null) return <Preloader />;
 
   const {
     id,

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MenuList } from "../MenuList/MenuList";
+import { ThemeSwitcher } from "../ThemeSwitcher";
 import "./style.css";
 
 export const Navigation = () => {
@@ -20,6 +21,7 @@ export const Navigation = () => {
           className={`overlay ${activeMenu}`}
           onClick={toggleMenuHandler}
         ></div>
+        <ThemeSwitcher />
       </nav>
     </>
   );

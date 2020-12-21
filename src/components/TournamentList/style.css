@@ -1,15 +1,27 @@
+.tournament-list {
+  padding: 0;
+}
+
+.tournament__title {
+  margin-left: 20px;
+}
+
 .tournament {
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 10px 5px;
+  padding: 10px 15px;
   transition: 0.5s;
-  color: black;
+  color: inherit;
 }
 
 .tournament:hover {
-  background: #f5f5f5;
+  background: var(--bg-item-hover);
   transition: 0.5s;
+}
+
+.tournament:active {
+  background-color: #ffc400;
 }
 
 .tournament-img__wrap {

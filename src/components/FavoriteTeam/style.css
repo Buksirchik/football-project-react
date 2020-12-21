@@ -9,14 +9,14 @@
   display: flex;
   align-items: center;
   padding: 5px 10px;
-  background-color: #EEEEEE;
-  border-bottom: 1px solid #26c6da;
+  background-color: var(--bg-item);
+  border-bottom: 1px solid var(--br-color-favorite-item);
   position: relative;
   transition: 0.5s;
 }
 
 .favorite-team:hover {
-  background-color: #cfd8dc;
+  background-color: var(--bg-item-hover);
   transition: 0.5s;
 }
 

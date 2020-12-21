@@ -13,12 +13,12 @@
   width: 100%;
   box-sizing: border-box;
   text-decoration: none;
-  color: #000;
+  color: inherit;
   transition: 0.5s;
 }
 
 .nav-links__item:hover {
-  background-color: #EEEEEE;
+  background-color: var(--bg-item-hover);
   transition: 0.5s;
 }
 

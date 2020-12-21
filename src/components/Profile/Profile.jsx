@@ -25,21 +25,21 @@ export const Profile = () => {
 
       {isEmptyTeams ? (
         <div className="following-teams">
-          Following teams
+          <h3 className="following__title">Following teams</h3>
           <FavoriteTeamsList teams={Object.values(favoriteTeams)} />
         </div>
       ) : null}
 
       {isEmptyPlayers ? (
         <div className="following-players">
-          Following players
+          <h3 className="following__title">Following players</h3>
           <FavoritePlayersList players={Object.values(favoritePlayers)} />
         </div>
       ) : null}
 
-      {(isEmptyPlayers && isEmptyTeams) === false ? (
+      {(isEmptyPlayers || isEmptyTeams) === true ? null : (
         <p className="profile__text">There aren't favorite players and teams</p>
-      ) : null}
+      )}
     </div>
   );
 };

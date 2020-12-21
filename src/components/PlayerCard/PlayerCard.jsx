@@ -39,16 +39,16 @@ export const PlayerCard = (props) => {
   return (
     <div className="card">
       <div className="card__front">
-        <p>{name || "John"}</p>
+        <p className="card__text">{name || "John"}</p>
       </div>
       <div className="card__back">
-        <p>Nationality: {nationality || "Westeros"}</p>
-        <p>
+        <p className="card__text">Nationality: {nationality || "Westeros"}</p>
+        <p className="card__text">
           Date of Birth:
           {" " + new Date(dateOfBirth).toLocaleDateString() || "04/06/1990"}
         </p>
-        <p>Position: {position || "Team Member"}</p>
-        <p>Role: {role || "Team Member"}</p>
+        <p className="card__text">Position: {position || "Team Member"}</p>
+        <p className="card__text">Role: {role || "Team Member"}</p>
         {isFavoritePlayer ? (
           <UnfollowBtn onClick={unfollowClickHandler} />
         ) : (

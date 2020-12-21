@@ -6,7 +6,8 @@ export const TableHeadCompetition = () => {
 
   // if the world championship or european championship, then do not show the form
   const isNotCup =
-    tournamentId !== 2000 && tournamentId !== 2018 ? true : false;
+    +tournamentId !== 2000 && +tournamentId !== 2018 ? true : false;
+    console.log(isNotCup, tournamentId)
   return (
     <thead>
       <tr className="standings__head">
