@@ -7,6 +7,7 @@ import {
   SET_TEAM_INFO,
   SET_TOURNAMENTS_LIST,
   SET_TOURNAMENT_INFO,
+  TOGGLE_THEME,
 } from "../actionTypes";
 
 export const getTournamentsList = () => (dispatch) => {
@@ -62,3 +63,5 @@ export const deleteFavoriteTeam = (payload) => ({
   type: DELETE_FAVORITE_TEAM,
   payload,
 });
+
+export const toggleTheme = (payload) => ({ type: TOGGLE_THEME, payload });

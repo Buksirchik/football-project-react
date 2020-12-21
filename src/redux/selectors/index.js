@@ -7,3 +7,4 @@ export const getListTournamentsSelector = (state) =>
 export const getTournamentInfoSelector = (state) =>
   state.tournament.tournamentInfo;
 export const getTeamInfoSelector = (state) => state.tournament.teamInfo;
+export const getThemeSelector = (state) => state.app.theme;
