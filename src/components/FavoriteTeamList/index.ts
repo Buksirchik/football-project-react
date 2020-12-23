@@ -1,0 +1,1 @@
+export { FavoriteTeamsList } from "./FavoriteTeamsList";

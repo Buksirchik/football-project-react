@@ -1,0 +1,1 @@
+export { TableHeadCompetition } from './TableHeadCompetition' 
