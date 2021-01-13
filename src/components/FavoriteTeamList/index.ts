@@ -1,1 +1,1 @@
-export { FavoriteTeamsList } from "./FavoriteTeamsList";
+export { FavoriteTeamsList } from './FavoriteTeamsList';

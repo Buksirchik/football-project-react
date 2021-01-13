@@ -1,1 +1,1 @@
-export { TableCompetition } from "./TableCompetition.jsx";
+export { TableCompetition } from './TableCompetition.jsx';

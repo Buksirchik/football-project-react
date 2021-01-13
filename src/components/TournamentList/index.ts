@@ -1,1 +1,1 @@
-export { TournamentList } from "./TournamentList";
+export { TournamentList } from './TournamentList';

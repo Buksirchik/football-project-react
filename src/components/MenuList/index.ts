@@ -1,1 +1,1 @@
-export { MenuList } from './MenuList.jsx'
+export { MenuList } from './MenuList.jsx';

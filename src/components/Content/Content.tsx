@@ -1,10 +1,10 @@
-import { FC } from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
 
 type PropTypes = {
-  children: React.ReactElement ;
-}
+  children: React.ReactElement;
+};
 
-export const Content: FC<PropTypes> = ({ children }) => {
-  return <div className="main-content">{children}</div>;
+export const Content = ({ children }: PropTypes): React.ReactElement => {
+  return <div className='main-content'>{children}</div>;
 };

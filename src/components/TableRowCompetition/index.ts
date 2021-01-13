@@ -1,1 +1,1 @@
-export { TableRowCompetition } from "./TableRowCompetition";
+export { TableRowCompetition } from './TableRowCompetition';

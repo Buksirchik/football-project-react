@@ -1,28 +1,23 @@
-import { useEffect } from "react";
-import { TableHeadCompetition } from "../TableHeadCompetition";
-import { TableRowCompetition } from "../TableRowCompetition";
-import { useDispatch, useSelector } from "react-redux";
-import { getTournamentInfoSelector } from "../../redux/selectors";
-import { getTournamentStandings } from "../../redux/actions";
-import { useParams } from "react-router-dom";
-import "./style.css";
-import { Preloader } from "../Preloader";
-import {
-  Standings,
-  TournamentInfo,
-} from "../../redux/reducers/tournamentReducer";
-import { RootState } from "../../redux/reducers";
+import React, { useEffect } from 'react';
+import { TableHeadCompetition } from '../TableHeadCompetition';
+import { TableRowCompetition } from '../TableRowCompetition';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTournamentInfoSelector } from '../../redux/selectors';
+import { getTournamentStandings } from '../../redux/actions';
+import { useParams } from 'react-router-dom';
+import './style.css';
+import { Preloader } from '../Preloader';
+import { Standings, TournamentInfo } from '../../types';
+import { RootState } from '../../redux/reducers';
 
 type ParamTypes = {
   id: string;
 };
 
-export const TableCompetition = () => {
+export const TableCompetition = (): React.ReactElement => {
   const dispatch = useDispatch();
   const { id: tournamentId } = useParams<ParamTypes>();
-  const tournamentInfo = useSelector<RootState, TournamentInfo | null>(
-    getTournamentInfoSelector
-  );
+  const tournamentInfo = useSelector<RootState, TournamentInfo | null>(getTournamentInfoSelector);
 
   useEffect(() => {
     dispatch(getTournamentStandings(+tournamentId));
@@ -35,7 +30,7 @@ export const TableCompetition = () => {
 
   return (
     <>
-      <h2 className="tournament__title">{competition.name}</h2>
+      <h2 className='tournament__title'>{competition.name}</h2>
       {showTable(standings)}
     </>
   );
@@ -43,11 +38,11 @@ export const TableCompetition = () => {
 
 function showTable(standings: Standings[]) {
   return standings.map(({ table, group }, id) => {
-    const title = group?.replace("_", " ");
+    const title = group?.replace('_', ' ');
     return (
       <div key={id}>
-        <h3 className="tournament__title">{title || "Standings"}</h3>
-        <table className="standings">
+        <h3 className='tournament__title'>{title || 'Standings'}</h3>
+        <table className='standings'>
           <TableHeadCompetition />
           <tbody>
             <TableRowCompetition table={table} />

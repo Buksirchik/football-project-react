@@ -1,13 +1,13 @@
-import { FC } from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
 
 type PropTypes = {
   onClick: () => void;
 };
 
-export const UnfollowBtn: FC<PropTypes> = ({ onClick }) => {
+export const UnfollowBtn = ({ onClick }: PropTypes): React.ReactElement => {
   return (
-    <button className="unfollow" onClick={onClick}>
+    <button className='unfollow' onClick={onClick}>
       UNFOLLOW
     </button>
   );

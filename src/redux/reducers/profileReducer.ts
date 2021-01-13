@@ -1,28 +1,11 @@
-import { ActionTypes } from "./../actions/types";
-import {
-  ADD_FAVORITE_PLAYER,
-  ADD_FAVORITE_TEAM,
-  DELETE_FAVORITE_PLAYER,
-  DELETE_FAVORITE_TEAM,
-} from "../actionTypes";
-
-export interface Favorite {
-  id: number;
-  name?: string;
-  crestUrl?: string;
-  position?: string;
-  clubName?: string;
-  clubIcon?: string;
-};
-
-export interface FavoriteItem {
-  [key: string]: Favorite;
-};
+import { ActionTypes } from './../actions/types';
+import { ADD_FAVORITE_PLAYER, ADD_FAVORITE_TEAM, DELETE_FAVORITE_PLAYER, DELETE_FAVORITE_TEAM } from '../actionTypes';
+import { FavoriteItem } from '../../types';
 
 export type ProfileState = {
   listFavoriteTeams: FavoriteItem;
   listFavoritePlayers: FavoriteItem;
-}
+};
 
 const initialState: ProfileState = {
   listFavoriteTeams: {},
@@ -31,7 +14,7 @@ const initialState: ProfileState = {
 
 export const profileReducer = (state = initialState, action: ActionTypes): ProfileState => {
   switch (action.type) {
-    case ADD_FAVORITE_PLAYER:
+    case ADD_FAVORITE_PLAYER: {
       const playerId = action.payload.id;
       const favoritePlayers = {
         ...state.listFavoritePlayers,
@@ -41,7 +24,8 @@ export const profileReducer = (state = initialState, action: ActionTypes): Profi
         ...state,
         listFavoritePlayers: favoritePlayers,
       };
-    case ADD_FAVORITE_TEAM:
+    }
+    case ADD_FAVORITE_TEAM: {
       const teamId = action.payload.id;
       const favoriteTeams = {
         ...state.listFavoriteTeams,
@@ -51,21 +35,25 @@ export const profileReducer = (state = initialState, action: ActionTypes): Profi
         ...state,
         listFavoriteTeams: favoriteTeams,
       };
-    case DELETE_FAVORITE_PLAYER:
-      const players = { ...state.listFavoritePlayers };
-      delete players[action.payload];
+    }
+    case DELETE_FAVORITE_PLAYER: {
+      const favoritePlayers = { ...state.listFavoritePlayers };
+      delete favoritePlayers[action.payload];
       return {
         ...state,
-        listFavoritePlayers: players,
+        listFavoritePlayers: favoritePlayers,
       };
-    case DELETE_FAVORITE_TEAM:
-      const teams = { ...state.listFavoriteTeams };
-      delete teams[action.payload];
+    }
+    case DELETE_FAVORITE_TEAM: {
+      const favoriteTeams = { ...state.listFavoriteTeams };
+      delete favoriteTeams[action.payload];
       return {
         ...state,
-        listFavoriteTeams: teams,
+        listFavoriteTeams: favoriteTeams,
       };
-    default:
+    }
+    default: {
       return state;
+    }
   }
 };

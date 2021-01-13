@@ -1,7 +1,7 @@
-import { combineReducers } from "redux";
-import { profileReducer, ProfileState } from "./profileReducer";
-import { tournamentReducer, TournamentState } from "./tournamentReducer";
-import { appReducer, AppState } from "./appReducer";
+import { combineReducers } from 'redux';
+import { profileReducer, ProfileState } from './profileReducer';
+import { tournamentReducer, TournamentState } from './tournamentReducer';
+import { appReducer, AppState } from './appReducer';
 
 export interface ApplicationState {
   tournament: TournamentState;

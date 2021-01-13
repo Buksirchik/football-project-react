@@ -1,11 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import { persistor, store } from "./redux";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import { HashRouter } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { persistor, store } from './redux';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { HashRouter } from 'react-router-dom';
+import './index.css';
 
 const app = (
   <Provider store={store}>
@@ -17,7 +17,4 @@ const app = (
   </Provider>
 );
 
-ReactDOM.render(
-  <React.StrictMode>{app}</React.StrictMode>,
-  document.getElementById("root")
-);
+ReactDOM.render(<React.StrictMode>{app}</React.StrictMode>, document.getElementById('root'));

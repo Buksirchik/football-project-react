@@ -1,1 +1,1 @@
-export { TeamForm } from "./TeamForm.jsx";
+export { TeamForm } from './TeamForm.jsx';

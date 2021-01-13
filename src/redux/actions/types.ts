@@ -1,4 +1,4 @@
-import { Favorite } from "./../reducers/profileReducer";
+import { Favorite, TeamInfo, TournamentInfo, Tournament } from './../../types';
 import {
   TOGGLE_THEME,
   DELETE_FAVORITE_TEAM,
@@ -7,13 +7,8 @@ import {
   ADD_FAVORITE_PLAYER,
   SET_TEAM_INFO,
   SET_TOURNAMENT_INFO,
-} from "./../actionTypes/index";
-import {
-  TeamInfo,
-  TournamentInfo,
-  Tournament,
-} from "./../reducers/tournamentReducer";
-import { SET_TOURNAMENTS_LIST } from "../actionTypes";
+} from './../actionTypes/index';
+import { SET_TOURNAMENTS_LIST } from '../actionTypes';
 
 interface SetTournamentsListAction {
   type: typeof SET_TOURNAMENTS_LIST;

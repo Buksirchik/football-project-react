@@ -1,1 +1,1 @@
-export { FollowBtn } from './FollowBtn'
+export { FollowBtn } from './FollowBtn';

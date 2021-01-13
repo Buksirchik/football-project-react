@@ -1,5 +1,4 @@
-import "./style.css";
+import React from 'react';
+import './style.css';
 
-export const Preloader = () => (
-  <div className="preloader"></div>
-)
+export const Preloader = (): React.ReactElement => <div className='preloader'></div>;

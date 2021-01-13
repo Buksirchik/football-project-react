@@ -1,12 +1,12 @@
-import { FC } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addFavoritePlayer, deleteFavoritePlayer } from "../../redux/actions";
-import { RootState } from "../../redux/reducers";
-import { FavoriteItem } from "../../redux/reducers/profileReducer";
-import { getFavoritePlayersSelector } from "../../redux/selectors";
-import { FollowBtn } from "../FollowBtn";
-import { UnfollowBtn } from "../UnfollowBtn";
-import "./style.css";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavoritePlayer, deleteFavoritePlayer } from '../../redux/actions';
+import { RootState } from '../../redux/reducers';
+import { FavoriteItem } from '../../types';
+import { getFavoritePlayersSelector } from '../../redux/selectors';
+import { FollowBtn } from '../FollowBtn';
+import { UnfollowBtn } from '../UnfollowBtn';
+import './style.css';
 
 type PropTypes = {
   name: string;
@@ -19,19 +19,10 @@ type PropTypes = {
   clubIcon: string;
 };
 
-export const PlayerCard: FC<PropTypes> = (props) => {
+export const PlayerCard = (props: PropTypes): React.ReactElement => {
   const dispatch = useDispatch();
   const favoritePlayers = useSelector<RootState, FavoriteItem>(getFavoritePlayersSelector);
-  const {
-    name,
-    dateOfBirth,
-    position,
-    nationality,
-    role,
-    id,
-    clubName,
-    clubIcon,
-  } = props;
+  const { name, dateOfBirth, position, nationality, role, id, clubName, clubIcon } = props;
 
   const isFavoritePlayer = !!favoritePlayers[id];
 
@@ -51,23 +42,19 @@ export const PlayerCard: FC<PropTypes> = (props) => {
   };
 
   return (
-    <div className="card">
-      <div className="card__front">
-        <p className="card__text">{name || "John"}</p>
+    <div className='card'>
+      <div className='card__front'>
+        <p className='card__text'>{name || 'John'}</p>
       </div>
-      <div className="card__back">
-        <p className="card__text">Nationality: {nationality || "Westeros"}</p>
-        <p className="card__text">
+      <div className='card__back'>
+        <p className='card__text'>Nationality: {nationality || 'Westeros'}</p>
+        <p className='card__text'>
           Date of Birth:
-          {" " + new Date(dateOfBirth).toLocaleDateString() || "04/06/1990"}
+          {' ' + new Date(dateOfBirth).toLocaleDateString() || '04/06/1990'}
         </p>
-        <p className="card__text">Position: {position || "Team Member"}</p>
-        <p className="card__text">Role: {role || "Team Member"}</p>
-        {isFavoritePlayer ? (
-          <UnfollowBtn onClick={unfollowClickHandler} />
-        ) : (
-          <FollowBtn onClick={followClickHandler} />
-        )}
+        <p className='card__text'>Position: {position || 'Team Member'}</p>
+        <p className='card__text'>Role: {role || 'Team Member'}</p>
+        {isFavoritePlayer ? <UnfollowBtn onClick={unfollowClickHandler} /> : <FollowBtn onClick={followClickHandler} />}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
-import { Favorite } from "./../reducers/profileReducer";
-import { ActionTypes } from "./types";
-import { API } from "../../api";
+import { Favorite, TeamInfo, TournamentInfo, Tournament } from './../../types';
+import { ActionTypes } from './types';
+import { API } from '../../api';
 import {
   ADD_FAVORITE_TEAM,
   ADD_FAVORITE_PLAYER,
@@ -10,40 +10,25 @@ import {
   SET_TOURNAMENTS_LIST,
   SET_TOURNAMENT_INFO,
   TOGGLE_THEME,
-} from "../actionTypes";
-import {
-  TeamInfo,
-  TournamentInfo,
-  Tournament,
-} from "../reducers/tournamentReducer";
-import { ThunkAction } from "redux-thunk";
-import { Action } from "redux";
-import { RootState } from "../reducers";
+} from '../actionTypes';
+import { ThunkAction } from 'redux-thunk';
+import { Action } from 'redux';
+import { RootState } from '../reducers';
 
-export const getTournamentsList = (): ThunkAction<
-  void,
-  RootState,
-  null,
-  Action<string>
-> => (dispatch) => {
+export const getTournamentsList = (): ThunkAction<void, RootState, null, Action<string>> => dispatch => {
   API.getTournaments()?.then(({ data }) => {
     const { competitions } = data;
     dispatch(setTournamentsList(competitions));
   });
 };
 
-export const getTournamentStandings = (
-  id: number
-): ThunkAction<void, RootState, null, Action<string>> => (dispatch) => {
-  console.log(typeof id)
+export const getTournamentStandings = (id: number): ThunkAction<void, RootState, null, Action<string>> => dispatch => {
   API.getTournamentStandings(id)?.then(({ data }) => {
     dispatch(setTournamentInfo(data));
   });
 };
 
-export const getTeamInfo = (
-  id: number
-): ThunkAction<void, RootState, null, Action<string>> => (dispatch) => {
+export const getTeamInfo = (id: number): ThunkAction<void, RootState, null, Action<string>> => dispatch => {
   API.getTeam(id)?.then(({ data }) => {
     dispatch(setTeamInfo(data));
   });

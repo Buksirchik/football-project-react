@@ -32,15 +32,15 @@
   --color-text: #fff;
   --bg-item-hover: #37474f;
   --bg-item: #546e7a;
-  --br-color-favorite-item: #161b22;;
+  --br-color-favorite-item: #161b22;
   --bg-profile-header: #546e7a;
   --bg-switcher: #fff;
   --bg-switcher-ball: #000;
   --br-color-table: #161b22;
-  --bg-table-header: #78909C;
+  --bg-table-header: #78909c;
   --bg-team-header: #130a3e;
-  --bg-player-fr-card:#607D8B;
-  --bg-player-bc-card:#37474F;
+  --bg-player-fr-card: #607d8b;
+  --bg-player-bc-card: #37474f;
   --card-shadow-calor: #009688;
   transition: 0.5s;
 }
