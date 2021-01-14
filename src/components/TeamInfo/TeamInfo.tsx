@@ -38,7 +38,7 @@ export const TeamInfo = (): React.ReactElement => {
 
   if (teamInfo === null) return <Preloader />;
 
-  const { id, name, crestUrl, founded = '1960', venue: stadium = 'National stadium' } = teamInfo;
+  const { id, name, crestUrl, founded = '1960', venue: stadium } = teamInfo;
 
   let { squad } = teamInfo;
 
@@ -58,7 +58,7 @@ export const TeamInfo = (): React.ReactElement => {
   const unfollowClickHandler = () => {
     dispatch(deleteFavoriteTeam(id));
   };
-
+  console.log(stadium);
   return (
     <section className='club'>
       <div className='club-info'>
@@ -68,7 +68,7 @@ export const TeamInfo = (): React.ReactElement => {
         <div className='club-info__col'>
           <h2 className='club-info__title'>{name}</h2>
           <p className='club-info__text'>Founded: {founded}</p>
-          <p className='club-info__text'>Stadium: {stadium}</p>
+          <p className='club-info__text'>Stadium: {stadium || 'National stadium'}</p>
           {isFavorite ? <UnfollowBtn onClick={unfollowClickHandler} /> : <FollowBtn onClick={followClickHandler} />}
         </div>
       </div>

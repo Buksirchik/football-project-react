@@ -119,7 +119,7 @@ export interface TeamInfo {
   email: string;
   founded: number;
   clubColors: string;
-  venue: string;
+  venue: string | null;
   squad: Player[];
   lastUpdated: string;
 }
