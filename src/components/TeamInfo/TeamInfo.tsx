@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addFavoriteTeam, deleteFavoriteTeam, getTeamInfo } from '../../redux/actions';
 import { RootState } from '../../redux/reducers';
-import { FavoriteItem, TeamInfo as TeamInfoTypes } from '../../types';
-import { getFavoriteTeamsSelector, getTeamInfoSelector } from '../../redux/selectors';
+import { FavoriteItem, FetchingStatus, TeamInfo as TeamInfoTypes } from '../../types';
+import { getFavoriteTeamsSelector, getFetchingStatus, getTeamInfoSelector } from '../../redux/selectors';
 import { FollowBtn } from '../FollowBtn';
 import { PlayerCard } from '../PlayerCard';
 import { Preloader } from '../Preloader';
@@ -28,6 +28,7 @@ export const TeamInfo = (): React.ReactElement => {
   const dispatch = useDispatch();
   const favoriteTeams = useSelector<RootState, FavoriteItem>(getFavoriteTeamsSelector);
   const teamInfo = useSelector<RootState, TeamInfoTypes | null>(getTeamInfoSelector);
+  const isFetching = useSelector<RootState, FetchingStatus>(getFetchingStatus);
   const { id: teamId } = useParams<ParamTypes>();
   const isFavorite = !!favoriteTeams[teamId];
 
@@ -36,7 +37,7 @@ export const TeamInfo = (): React.ReactElement => {
     window.scrollTo(0, 0);
   }, [dispatch, teamId]);
 
-  if (teamInfo === null) return <Preloader />;
+  if (isFetching || teamInfo === null) return <Preloader />;
 
   const { id, name, crestUrl, founded = '1960', venue: stadium } = teamInfo;
 
@@ -58,7 +59,7 @@ export const TeamInfo = (): React.ReactElement => {
   const unfollowClickHandler = () => {
     dispatch(deleteFavoriteTeam(id));
   };
-  console.log(stadium);
+
   return (
     <section className='club'>
       <div className='club-info'>

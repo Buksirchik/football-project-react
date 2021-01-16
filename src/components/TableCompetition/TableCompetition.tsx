@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { TableHeadCompetition } from '../TableHeadCompetition';
 import { TableRowCompetition } from '../TableRowCompetition';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTournamentInfoSelector } from '../../redux/selectors';
+import { getFetchingStatus, getTournamentInfoSelector } from '../../redux/selectors';
 import { getTournamentStandings } from '../../redux/actions';
 import { useParams } from 'react-router-dom';
 import './style.css';
 import { Preloader } from '../Preloader';
-import { Standings, TournamentInfo } from '../../types';
+import { FetchingStatus, Standings, TournamentInfo } from '../../types';
 import { RootState } from '../../redux/reducers';
 
 type ParamTypes = {
@@ -18,13 +18,14 @@ export const TableCompetition = (): React.ReactElement => {
   const dispatch = useDispatch();
   const { id: tournamentId } = useParams<ParamTypes>();
   const tournamentInfo = useSelector<RootState, TournamentInfo | null>(getTournamentInfoSelector);
+  const isFetching = useSelector<RootState, FetchingStatus>(getFetchingStatus);
 
   useEffect(() => {
     dispatch(getTournamentStandings(+tournamentId));
     window.scrollTo(0, 0);
   }, [tournamentId, dispatch]);
 
-  if (tournamentInfo === null) return <Preloader />;
+  if (isFetching || tournamentInfo === null) return <Preloader />;
 
   const { competition, standings } = tournamentInfo;
 

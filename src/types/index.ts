@@ -136,3 +136,5 @@ export interface Favorite {
 export interface FavoriteItem {
   [key: string]: Favorite;
 }
+
+export type FetchingStatus = boolean;

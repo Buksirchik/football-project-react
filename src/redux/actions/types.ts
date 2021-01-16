@@ -7,6 +7,7 @@ import {
   ADD_FAVORITE_PLAYER,
   SET_TEAM_INFO,
   SET_TOURNAMENT_INFO,
+  IS_FETCHING,
 } from './../actionTypes/index';
 import { SET_TOURNAMENTS_LIST } from '../actionTypes';
 
@@ -50,6 +51,10 @@ interface ToggleThemeAction {
   payload: string;
 }
 
+interface ToggleFetchingAction {
+  type: typeof IS_FETCHING;
+}
+
 export type ActionTypes =
   | SetTournamentsListAction
   | SetTournamentInfoAction
@@ -58,4 +63,5 @@ export type ActionTypes =
   | AddFavoriteTeamAction
   | DeleteFavoritePlayerAction
   | DeleteFavoriteTeamAction
-  | ToggleThemeAction;
+  | ToggleThemeAction
+  | ToggleFetchingAction;

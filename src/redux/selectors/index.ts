@@ -7,3 +7,4 @@ export const getListTournamentsSelector = (state: RootState): Tournament[] => st
 export const getTournamentInfoSelector = (state: RootState): TournamentInfo | null => state.tournament.tournamentInfo;
 export const getTeamInfoSelector = (state: RootState): TeamInfo | null => state.tournament.teamInfo;
 export const getThemeSelector = (state: RootState): string => state.app.theme;
+export const getFetchingStatus = (state: RootState): boolean => state.app.isFetching;
